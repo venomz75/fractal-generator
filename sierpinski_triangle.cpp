@@ -4,13 +4,13 @@
 using namespace std;
 
 //global variables
-int h, w, cX, cY;           //master triangle vars: height, width centerX, centerY
+int h, w, cX, cY;           //master triangle vars: height, width, centerX, centerY
 vector<vector<char>> grid;  //the ASCII grid is stored in a 2D vector
 
 //creating the master triangle and initialising vars
 void setup() {
     //initialise globals
-    cout << "Desired iterations: ";
+    cout << "Desired iterations(over 5 creates very large shapes!): ";
     cin >> h;
     h = pow(2, h+1);
     w = 2*h-1;
