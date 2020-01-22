@@ -1,17 +1,18 @@
-//Sierpinski Carpet by venomz75 (MMXX)
+//Vicsek Fractal by venomz75 (MMXX)
 
 #include <iostream>
 #include <vector>
 #include <math.h>
+
 using namespace std;
 
 //global variables
-int length, centerX, centerY;   //starting variables
+int length, centerX, centerY;   //starting variables  
 vector<vector<char>> grid;      //ASCII grid
 
 //initialising vars and populating grid
 void setup() {
-    cout << "Desired iterations(over 5 creates very large shapes!): ";
+    cout << "Desired iterations(0-4 recommended): ";
     cin >> length;
     length = pow(3, length);
     centerX = length/2;
@@ -20,38 +21,56 @@ void setup() {
 }
 
 //draw grid to console
-void draw() {
+void draw() { 
     for (int i = 0; i < length; i++) {
         for (int j = 0; j < length; j++) {
             cout << grid[i][j];
         }
         cout << "\n";
-    }
+    }       
 }
 
-//creating rings of holes recursively
+//removing corners of length/3 recursively
 void recursion(int l, int cX, int cY) {
     //escape condition
     if (l < 3) return;
 
     //only l/3 is needed after this, shrunk now for readability
-    l = l / 3;
+    l = l/3;
 
-    //create hole in square
-    for (int i = cY-l/2; i <= cY+l/2; i++) {
-        for (int j = cX-l/2; j <= cX+l/2; j++) {
+    //remove NW corner
+    for (int i = cY-l-l/2; i <= cY-l+l/2; i++) {
+        for (int j = cX-l-l/2; j <= cX-l+l/2; j++) {
             grid[i][j] = ' ';
         }
     }
 
-    recursion(l,cX-l,cY-l);     //NW
+    //remove NE corner
+    for (int i = cY-l-l/2; i <= cY-l+l/2; i++) {
+        for (int j = cX+l-l/2; j <= cX+l+l/2; j++) {
+            grid[i][j] = ' ';
+        }
+    }
+
+    //remove SE corner
+    for (int i = cY+l-l/2; i <= cY+l+l/2; i++) {
+        for (int j = cX+l-l/2; j <= cX+l+l/2; j++) {
+            grid[i][j] = ' ';
+        }
+    }
+
+    //remove SW corner
+    for (int i = cY+l-l/2; i <= cY+l+l/2; i++) {
+        for (int j = cX-l-l/2; j <= cX-l+l/2; j++) {
+            grid[i][j] = ' ';
+        }
+    }
+ 
     recursion(l,cX,cY-l);       //N
-    recursion(l,cX+l,cY-l);     //NE
     recursion(l,cX+l,cY);       //E
-    recursion(l,cX+l,cY+l);     //SE
     recursion(l,cX,cY+l);       //S
-    recursion(l,cX-l,cY+l);     //SW
     recursion(l,cX-l,cY);       //W
+    recursion(l,cX,cY);         //CENTER
 }
 
 //entry point
