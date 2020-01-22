@@ -2,10 +2,10 @@
 A collection of ASCII fractal generators written in C++.
 
 ### Setup
-Your system needs Bash and G++ to use the script, otherwise you will need to compile and/or execute the code manually. Anything Linux based usually has these already. If on Windows, I recommend using WSL.
+Your system needs Bash and G++ to use the script, otherwise you will need to compile and/or execute the code manually. Anything Linux based usually has these already. If on Windows, I recommend using WSL but you may need to install *dos2unix* and run `dos2unix fractalASCII.sh` before using Bash.
 
 1. Clone this repository to a directoy of your choice.
-2. Run `fractalASCII.sh`.
+2. Run `bash fractalASCII.sh` or `./fractalASCII.sh` if the script is set as executable.
 3. The fractal code will be compiled automatically if the executables are not found.
 4. You are ready to play around with the fractals I have implemented.
 

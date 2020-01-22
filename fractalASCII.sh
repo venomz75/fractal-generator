@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 if [ ! -e ./sierpinski_triangle ]; then
     echo "File sierpinski_triangle not found, compiling now..."
@@ -41,6 +41,7 @@ fi
 if [ $input = 3 ]; then
     ./vicsek_fractal;
 fi
+
 if [ $input = 4 ]; then
     echo "Recompiling all fractals..."
     g++ sierpinski_triangle.cpp -o sierpinski_triangle;
