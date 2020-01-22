@@ -12,7 +12,7 @@ vector<vector<char>> grid;      //ASCII grid
 
 //initialising vars and populating grid
 void setup() {
-    cout << "Desired iterations(0-4 recommended): ";
+    cout << "Select no. of iterations(0-4 recommended): ";
     cin >> length;
     length = pow(3, length);
     centerX = length/2;
@@ -22,12 +22,14 @@ void setup() {
 
 //draw grid to console
 void draw() { 
+    cout << "\n";
     for (int i = 0; i < length; i++) {
         for (int j = 0; j < length; j++) {
             cout << grid[i][j];
         }
         cout << "\n";
     }       
+    cout << "\n";
 }
 
 //removing corners of length/3 recursively

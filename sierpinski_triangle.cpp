@@ -11,7 +11,7 @@ vector<vector<char>> grid;              //ASCII grid
 
 //initialising vars and populating grid
 void setup() {
-    cout << "Desired iterations(over 5 creates very large shapes!): ";
+    cout << "Select no. of iterations(0-5 recommended): ";
     cin >> height;
     height = pow(2, height+1);
     width = 2*height-1;
@@ -30,12 +30,14 @@ void setup() {
 
 //draw grid to console
 void draw() {
+    cout << "\n";
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             cout << grid[i][j];
         }
         cout << "\n";
     }
+    cout << "\n";
 }
 
 //creating triangular gaps recursively
